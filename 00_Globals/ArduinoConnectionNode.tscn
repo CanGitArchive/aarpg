@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://du52cy8jxx06v"]
+
+[ext_resource type="Script" uid="uid://bkngb70uwwlxr" path="res://00_Globals/arduino_connection.cs" id="1_6w65o"]
+
+[node name="ArduinoConnectionNode" type="Node"]
+script = ExtResource("1_6w65o")
