@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://beejai6np7llx"]
+[gd_scene load_steps=38 format=3 uid="uid://beejai6np7llx"]
 
 [ext_resource type="Texture2D" uid="uid://c4sga4xjv6q1" path="res://Enemies/Slime/Slime.png" id="1_0ae7n"]
 [ext_resource type="Script" uid="uid://7lotvf60b3cx" path="res://Enemies/Scripts/enemy.gd" id="1_wyclx"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://cb77ibhaunu6j" path="res://Enemies/Slime/DestroySmoke.png" id="10_suwpu"]
 [ext_resource type="Script" uid="uid://dry32uir5aapy" path="res://Enemies/Scripts/states/enemy_state_destroy.gd" id="11_36jae"]
 [ext_resource type="PackedScene" uid="uid://wwfk6suv8exp" path="res://GeneralNodes/HitBox/hit_box.tscn" id="12_j1ull"]
+[ext_resource type="Script" uid="uid://cvev6rgdkmeg1" path="res://Enemies/Scripts/drop_data.gd" id="13_mp7rs"]
+[ext_resource type="Resource" uid="uid://d2wetyxedq0rf" path="res://Items/gem.tres" id="14_ke740"]
+[ext_resource type="Resource" uid="uid://dvpq1lwccig2c" path="res://Items/apple.tres" id="15_ke740"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkpye"]
 radius = 13.0
@@ -755,6 +758,22 @@ _data = {
 &"walk_up": SubResource("Animation_puctb")
 }
 
+[sub_resource type="Resource" id="Resource_ts4pi"]
+script = ExtResource("13_mp7rs")
+item = ExtResource("14_ke740")
+probability = 100.0
+min_amount = 1
+max_amount = 4
+metadata/_custom_type_script = "uid://cvev6rgdkmeg1"
+
+[sub_resource type="Resource" id="Resource_2vvwu"]
+script = ExtResource("13_mp7rs")
+item = ExtResource("15_ke740")
+probability = 33.0
+min_amount = 1
+max_amount = 1
+metadata/_custom_type_script = "uid://cvev6rgdkmeg1"
+
 [sub_resource type="Animation" id="Animation_36jae"]
 length = 0.001
 tracks/0/type = "value"
@@ -877,10 +896,12 @@ next_state = NodePath("../Idle")
 
 [node name="Stun" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("10_5fs0k")
+knockback_speed = 100.0
 next_state = NodePath("../Idle")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("11_36jae")
+drops = Array[ExtResource("13_mp7rs")]([SubResource("Resource_ts4pi"), SubResource("Resource_2vvwu")])
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 max_polyphony = 4
