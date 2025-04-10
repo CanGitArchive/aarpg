@@ -53,10 +53,9 @@ func set_direction( _new_direction : Vector2) -> bool:
 	
 	if new_dir == cardinal_direction: ## if you are still in the same direction, keep it
 		return false
-	
 	direction_changed.emit( new_dir )
-	
 	cardinal_direction = new_dir
+	
 	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	
 	return true
