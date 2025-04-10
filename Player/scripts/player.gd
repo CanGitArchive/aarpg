@@ -51,11 +51,6 @@ func set_direction() -> bool:
 	
 	if direction == Vector2.ZERO:
 		return false
-		
-	#if direction.y == 0: ## if you aren't moving up or down
-		#new_dir = Vector2.LEFT if direction.x == -1 else Vector2.RIGHT
-	#elif direction.x == 0: ## if you aren't moving left or right
-		#new_dir = Vector2.UP if direction.y == -1 else Vector2.DOWN
 	
 	var direction_id : int = int( round( ( direction + cardinal_direction * 0.1 ).angle() / TAU * DIR_4.size() ) )
 	var new_dir = DIR_4[ direction_id ]
@@ -68,7 +63,6 @@ func set_direction() -> bool:
 	cardinal_direction = new_dir
 	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	
-		
 	return true
 
 func update_animation(state: String) -> void:
