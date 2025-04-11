@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://bwltpy3m3wtcn"]
+[gd_scene load_steps=8 format=4 uid="uid://bwltpy3m3wtcn"]
 
 [ext_resource type="Script" uid="uid://bx08w5oyvv2bl" path="res://Levels/level.gd" id="1_2la2r"]
 [ext_resource type="PackedScene" uid="uid://bl2iga31hh6fc" path="res://Tile Maps/dungeon_01.tscn" id="1_umoo4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ct0fjbhm4k4jy" path="res://Levels/level_transition.tscn" id="4_ux7ia"]
 [ext_resource type="PackedScene" uid="uid://dxhbyqasrei17" path="res://Interactables/Dungeon/pressure_plate.tscn" id="5_swvnj"]
 [ext_resource type="PackedScene" uid="uid://b4gjqpp24saf4" path="res://Interactables/Dungeon/barred_door.tscn" id="6_m3xjo"]
+[ext_resource type="PackedScene" uid="uid://hjhr1n4p6cir" path="res://Interactables/Dungeon/pushable_statue.tscn" id="7_4dhgi"]
 
 [node name="01" type="Node2D"]
 script = ExtResource("1_2la2r")
@@ -24,11 +25,20 @@ target_transition_area = "LevelTransition3"
 center_player = true
 side = 3
 
+[node name="LevelTransition2" parent="." instance=ExtResource("4_ux7ia")]
+position = Vector2(256, 80)
+level = "uid://dvusb7gm1y13g"
+center_player = true
+side = 2
+
 [node name="PressurePlate" parent="." instance=ExtResource("5_swvnj")]
 position = Vector2(176, 144)
 
 [node name="BarredDoor" parent="." instance=ExtResource("6_m3xjo")]
 position = Vector2(224, 86)
+
+[node name="PushableStatue" parent="." instance=ExtResource("7_4dhgi")]
+position = Vector2(319, 144)
 
 [connection signal="activated" from="PressurePlate" to="BarredDoor" method="open_door"]
 [connection signal="deactivated" from="PressurePlate" to="BarredDoor" method="close_door"]

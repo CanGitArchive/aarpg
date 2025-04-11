@@ -9,12 +9,12 @@ func UpdateDirection (new_direction : Vector2) -> void:
 
 	match new_direction:
 		Vector2.DOWN:
-			position = Vector2(0, -10)
+			rotation_degrees = 0
 		Vector2.UP:
-			position = Vector2(0, -45)
+			rotation_degrees = 180
 		Vector2.LEFT:
-			position = Vector2(-20, -20)
+			rotation_degrees = 90
 		Vector2.RIGHT:
-			position = Vector2(20, -20)
+			rotation_degrees = -90
 		_:
-			position = Vector2(0, -10)
+			rotation_degrees = 0
